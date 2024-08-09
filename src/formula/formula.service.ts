@@ -5,13 +5,12 @@ import { getGAnalysis } from '../lib/nearley';
 export class FormulaService {
   getFormula(body: FormulaParams): FormulaReturnType {
     try {
-      const r = getGAnalysis(body.formula);
+      const r = getGAnalysis(body.formula)[0];
       return {
         success: true,
         result: r[0],
       };
     } catch (e) {
-      console.log(e);
       return {
         success: false,
         result: '',
