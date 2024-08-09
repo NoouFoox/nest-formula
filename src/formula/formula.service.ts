@@ -6,7 +6,11 @@ export class FormulaService {
   getFormula(body: FormulaParams): FormulaReturnType {
     try {
       const result = getGAnalysis(body.formula)[0];
-      if (!result[0]) {
+      if (
+        !result[0] === undefined &&
+        result[0] === Infinity &&
+        result[0] === -Infinity
+      ) {
         throw new Error('Invalid formula');
       }
       return {
